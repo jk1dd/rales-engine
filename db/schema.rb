@@ -22,6 +22,27 @@ ActiveRecord::Schema.define(version: 20170502013103) do
     t.datetime "updated_at"
   end
 
+  create_table "invoice_items", force: :cascade do |t|
+    t.integer  "quantity"
+    t.integer  "unit_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "unit_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "merchants", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
