@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       namespace :merchants do
-        get '/find', to: 'find#show' #is this the way to do this?
+        get '/find', to: 'find#show'
       end
       resources :merchants, only: [:index, :show]
       resources :transactions, only: [:index, :show]
