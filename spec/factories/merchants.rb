@@ -1,7 +1,13 @@
 FactoryGirl.define do
   factory :merchant do
-    name 'Merchy McMerchant'
-    created_at "2017-05-01 18:06:59"
-    updated_at "2017-05-01 18:06:59"
+    sequence :name do |n|
+      "Merchy McMerchant #{n}"
+    end
+    sequence :created_at do |n|
+      "2017-05-0#{n} 18:06:59"
+    end
+    sequence :updated_at do |n|
+      "2017-05-0#{n} 18:06:59"
+    end
   end
 end
