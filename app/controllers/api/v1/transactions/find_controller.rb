@@ -9,6 +9,8 @@ class Api::V1::Transactions::FindController < ApplicationController
       Transaction.where(credit_card_expiration_date: params[:credit_card_expiration_date])
     elsif params[:result]
       Transaction.where('lower(result) = ?', params[:result].downcase)
+    elsif params[:invoice_id]
+      Transaction.where(invoice_id: params[:invoice_id])
     elsif params[:created_at]
       Transaction.where(created_at: params[:created_at])
     elsif params[:updated_at]
@@ -26,6 +28,8 @@ class Api::V1::Transactions::FindController < ApplicationController
       Transaction.find_by(credit_card_expiration_date: params[:credit_card_expiration_date])
     elsif params[:result]
       Transaction.find_by('lower(result) = ?', params[:result].downcase)
+    elsif params[:invoice_id]
+      Transaction.find_by(invoice_id: params[:invoice_id])
     elsif params[:created_at]
       Transaction.find_by(created_at: params[:created_at])
     elsif params[:updated_at]
