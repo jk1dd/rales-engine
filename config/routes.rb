@@ -29,7 +29,12 @@ Rails.application.routes.draw do
         get '/find', to: 'find#show'
         get '/random', to: 'random#show'
       end
-      resources :customers, only: [:index, :show]
+      resources :customers, only: [:index, :show] do
+        scope module: :customers do
+          resources :invoices, only: [:index]
+          resources :transactions, only: [:index]
+        end
+      end
 
       namespace :invoices do
         get 'find_all', to: 'find#index'
