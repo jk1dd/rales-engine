@@ -64,8 +64,10 @@ end
 
 describe "Invoice Item params can find all records" do
   it "can find all invoice items by id" do
-    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
+    item = create(:item, id: 1)
+    invoice = create(:invoice, id: 1)
+    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
+    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
 
     get "/api/v1/invoice_items/find_all?id=#{ii1.id}"
 
@@ -78,9 +80,11 @@ describe "Invoice Item params can find all records" do
   end
 
   it "can find all invoice items by quantity" do
-    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    ii3 = InvoiceItem.create(quantity: 3, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
+    item = create(:item, id: 1)
+    invoice = create(:invoice, id: 1)
+    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
+    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
+    ii3 = InvoiceItem.create(quantity: 3, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
 
     get "/api/v1/invoice_items/find_all?quantity=#{ii1.quantity}"
 
@@ -93,9 +97,11 @@ describe "Invoice Item params can find all records" do
   end
 
   it "can find all invoice items by unit price" do
-    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    ii3 = InvoiceItem.create(quantity: 1, unit_price: 1400, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
+    item = create(:item, id: 1)
+    invoice = create(:invoice, id: 1)
+    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
+    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
+    ii3 = InvoiceItem.create(quantity: 1, unit_price: 1400, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
     unit_price = "12.00"
     get "/api/v1/invoice_items/find_all?unit_price=#{unit_price}"
 
@@ -108,9 +114,11 @@ describe "Invoice Item params can find all records" do
   end
 
   it "can find all invoice items by created at" do
-    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    ii3 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-03 18:06:59", updated_at: "2017-05-01 18:06:59")
+    item = create(:item, id: 1)
+    invoice = create(:invoice, id: 1)
+    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
+    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
+    ii3 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-03 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
 
     get "/api/v1/invoice_items/find_all?created_at=#{ii1.created_at}"
 
@@ -123,9 +131,11 @@ describe "Invoice Item params can find all records" do
   end
 
   it "can find all invoice items by updated_at" do
-    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    ii3 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-03 18:06:59")
+    item = create(:item, id: 1)
+    invoice = create(:invoice, id: 1)
+    ii1 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
+    ii2 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", item_id: 1, invoice_id: 1)
+    ii3 = InvoiceItem.create(quantity: 1, unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-03 18:06:59", item_id: 1, invoice_id: 1)
 
     get "/api/v1/invoice_items/find_all?updated_at=#{ii1.updated_at}"
 

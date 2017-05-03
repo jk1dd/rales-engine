@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :transaction do
+    invoice
     credit_card "5555555555555555"
     credit_card_expiration_date "5555"
     result 'success'
