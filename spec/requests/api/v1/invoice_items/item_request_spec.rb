@@ -11,7 +11,7 @@ describe 'Invoice items item' do
 
     returned_item = JSON.parse(response.body)
 
-    expect(returned_item.count).to eq(1)
-    expect(returned_item.first["id"]).to eq(item.id)
+    expect(returned_item.class).to eq(Hash)
+    expect(returned_item["id"]).to eq(item.id)
   end
 end

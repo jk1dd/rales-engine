@@ -11,7 +11,7 @@ describe "Transaction invoice" do
 
     returned_transaction = JSON.parse(response.body)
 
-    expect(returned_transaction.count).to eq(1)
-    expect(returned_transaction.first["id"]).to eq(transaction.id)
+    expect(returned_transaction.class).to eq(Hash)
+    expect(returned_transaction["id"]).to eq(transaction.id)
   end
 end

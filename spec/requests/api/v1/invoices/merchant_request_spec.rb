@@ -11,7 +11,7 @@ describe 'Invoice merchant' do
 
     returned_merchant = JSON.parse(response.body)
 
-    expect(returned_merchant.count).to eq(1)
-    expect(returned_merchant.first["id"]).to eq(merchant.id)
+    expect(returned_merchant.class).to eq(Hash)
+    expect(returned_merchant["id"]).to eq(merchant.id)
   end
 end

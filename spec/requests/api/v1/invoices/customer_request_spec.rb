@@ -11,7 +11,7 @@ describe "Invoice customer" do
 
     returned_customer = JSON.parse(response.body)
 
-    expect(returned_customer.count).to eq(1)
-    expect(returned_customer.first["id"]).to eq(customer.id)
+    expect(returned_customer.class).to eq(Hash)
+    expect(returned_customer["id"]).to eq(customer.id)
   end
 end

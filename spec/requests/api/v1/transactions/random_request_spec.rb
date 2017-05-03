@@ -11,6 +11,5 @@ describe 'Returns a random Transaction' do
     transaction = JSON.parse(response.body)
 
     expect(transaction.class).to be(Hash)
-    expect(transaction.count).to eq(2)
   end
 end
