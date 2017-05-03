@@ -3,8 +3,8 @@ class Api::V1::Transactions::FindController < ApplicationController
     render json:
     if params[:id]
       Transaction.where(id: params[:id])
-    elsif params[:credit_card]
-      Transaction.where(credit_card: params[:credit_card])
+    elsif params[:credit_card_number]
+      Transaction.where(credit_card_number: params[:credit_card_number])
     elsif params[:credit_card_expiration_date]
       Transaction.where(credit_card_expiration_date: params[:credit_card_expiration_date])
     elsif params[:result]
@@ -20,8 +20,8 @@ class Api::V1::Transactions::FindController < ApplicationController
     render json:
     if params[:id]
       Transaction.find(params[:id])
-    elsif params[:credit_card]
-      Transaction.find_by(credit_card: params[:credit_card])
+    elsif params[:credit_card_number]
+      Transaction.find_by(credit_card_number: params[:credit_card_number])
     elsif params[:credit_card_expiration_date]
       Transaction.find_by(credit_card_expiration_date: params[:credit_card_expiration_date])
     elsif params[:result]

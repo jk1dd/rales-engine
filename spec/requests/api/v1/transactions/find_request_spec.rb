@@ -16,7 +16,7 @@ describe 'Transaction params returns single record' do
   it 'can find transaction by credit_card' do
     transactions = create_list(:transaction, 3)
 
-    get "/api/v1/transactions/find?credit_card=#{transactions.first.credit_card}"
+    get "/api/v1/transactions/find?credit_card_number=#{transactions.first.credit_card_number}"
 
     expect(response).to be_success
 
@@ -75,10 +75,10 @@ describe "Transaction params will find all records" do
     expect(transaction.first["id"]).to eq(transactions.first.id)
   end
 
-  it "can find all transactions by credit card" do
+  it "can find all transactions by credit card_number" do
     transactions = create_list(:transaction, 3)
 
-    get "/api/v1/transactions/find_all?credit_card=#{transactions.first.credit_card}"
+    get "/api/v1/transactions/find_all?credit_card_number=#{transactions.first.credit_card_number}"
 
     expect(response).to be_success
 
