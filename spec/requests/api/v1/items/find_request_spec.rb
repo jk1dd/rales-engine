@@ -89,9 +89,10 @@ describe "Item params can return all records" do
   end
 
   it "can find all items by name" do
-    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    item2 = Item.create(name: "item1", description: "This is item 2", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
+    create(:merchant, id: 1)
+    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item2 = Item.create(name: "item1", description: "This is item 2", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
 
     get "/api/v1/items/find_all?name=#{item1.name}"
 
@@ -113,9 +114,10 @@ describe "Item params can return all records" do
   end
 
   it "can find all items by description" do
-    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    item2 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
+    create(:merchant, id: 1)
+    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item2 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
 
     get "/api/v1/items/find_all?description=#{item1.description}"
 
@@ -137,9 +139,10 @@ describe "Item params can return all records" do
   end
 
   it "can find all items by unit price" do
-    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    item2 = Item.create(name: "item1", description: "This is item 2", unit_price: 1400, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
+    create(:merchant, id: 1)
+    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item2 = Item.create(name: "item1", description: "This is item 2", unit_price: 1400, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
     unit_price = "12.00"
     get "/api/v1/items/find_all?unit_price=#{unit_price}"
 
@@ -152,9 +155,10 @@ describe "Item params can return all records" do
   end
 
   it "can find all items by created_at" do
-    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    item2 = Item.create(name: "item1", description: "This is item 2", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-03 18:06:59", updated_at: "2017-05-01 18:06:59")
+    create(:merchant, id: 1)
+    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item2 = Item.create(name: "item1", description: "This is item 2", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-03 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
 
     get "/api/v1/items/find_all?created_at=#{item1.created_at}"
 
@@ -167,9 +171,10 @@ describe "Item params can return all records" do
   end
 
   it "can find all items by updated at" do
-    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-    item2 = Item.create(name: "item1", description: "This is item 2", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-03 18:06:59")
-    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
+    create(:merchant, id: 1)
+    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item2 = Item.create(name: "item1", description: "This is item 2", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-03 18:06:59", merchant_id: 1)
+    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
 
     get "/api/v1/items/find_all?updated_at=#{item1.updated_at}"
 

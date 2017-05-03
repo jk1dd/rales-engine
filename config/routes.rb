@@ -7,7 +7,11 @@ Rails.application.routes.draw do
         get '/find', to: 'find#show'
         get '/random', to: 'random#show'
       end
-      resources :merchants, only: [:index, :show]
+      resources :merchants, only: [:index, :show] do
+        scope module: :merchants do
+          resources :items, only: [:index]
+        end
+      end
 
       namespace :transactions do
         get '/find_all', to: 'find#index'

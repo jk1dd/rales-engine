@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :item do
+    merchant
     name "Shoes"
     description "Like walking on clouds"
     unit_price 100

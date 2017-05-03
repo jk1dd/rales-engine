@@ -35,15 +35,15 @@ describe 'Merchant params returns single record' do
   end
 
   it "can find a merchant by created_at" do
-    merchants = create_list(:merchant, 3)
+    merchant1 = Merchant.create(name: "merchant1", created_at: "2017-05-01 18:06:59", updated_at: "2017-05-02 18:06:59")
 
-    get "/api/v1/merchants/find?created_at=#{merchants.first.created_at}"
+    get "/api/v1/merchants/find?created_at=#{merchant1.created_at}"
 
     expect(response).to be_success
 
     merchant = JSON.parse(response.body)
 
-    expect(merchant["id"]).to eq(merchants.first.id)
+    expect(merchant["id"]).to eq(merchant1.id)
   end
 
   it "can find a merchant by updated_at" do
