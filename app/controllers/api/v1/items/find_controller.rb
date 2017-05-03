@@ -8,7 +8,7 @@ class Api::V1::Items::FindController < ApplicationController
     elsif params[:description]
       Item.where('lower(description) =?', params[:description].downcase)
     elsif params[:unit_price]
-      Item.where(unit_price: params[:unit_price])
+      Item.where(unit_price: (params[:unit_price].to_f * 100.00).round(2).to_i)
     elsif params[:created_at]
       Item.where(created_at: params[:created_at])
     elsif params[:updated_at]

@@ -39,8 +39,8 @@ describe "Item params returns single record" do
 
   it "can find item by unit price" do
     items = create_list(:item, 3)
-
-    get "/api/v1/items/find?unit_price=#{items.first.unit_price}"
+    unit_price= "1.00"
+    get "/api/v1/items/find?unit_price=#{unit_price}"
 
     expect(response).to be_success
 
@@ -140,8 +140,8 @@ describe "Item params can return all records" do
     item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
     item2 = Item.create(name: "item1", description: "This is item 2", unit_price: 1400, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
     item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59")
-
-    get "/api/v1/items/find_all?unit_price=#{item1.unit_price}"
+    unit_price = "12.00"
+    get "/api/v1/items/find_all?unit_price=#{unit_price}"
 
     expect(response).to be_success
 
