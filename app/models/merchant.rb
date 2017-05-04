@@ -36,4 +36,17 @@ class Merchant < ApplicationRecord
     order("total_items DESC").
     limit(limit)
   end
+
+  def self.merchant_revenue_by_date(merchant, date)
+    total_revenue = self.find_by_sql("SELECT sum(invoice_items.quantity * invoice_items.unit_price) AS revenue
+                                      FROM merchants
+                                      JOIN invoices ON invoices.merchant_id = merchants.id
+                                      JOIN invoice_items ON invoice_items.invoice_id = invoices.id
+                                      JOIN transactions on transactions.invoice_id = invoices.id
+                                      WHERE transactions.result = 'success'
+                                      AND merchants.id = #{merchant}
+                                      AND invoices.created_at = '#{date}';")
+
+    { revenue: ((total_revenue[0].revenue)/100.00).to_s }
+  end
 end
