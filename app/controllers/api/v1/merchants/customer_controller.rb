@@ -1,5 +1,5 @@
 class Api::V1::Merchants::CustomerController < ApplicationController
   def show
-    render json: Customer.top_customer(params[:merchant_id])
+    render json: Customer.top_customer(params[:merchant_id]).first
   end
 end
