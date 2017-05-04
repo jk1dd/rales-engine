@@ -49,4 +49,13 @@ class Merchant < ApplicationRecord
 
     { revenue: ((total_revenue[0].revenue)/100.00).to_s }
   end
+
+  def self.top_merchant(customer)
+    joins(invoices: [:customer, :transactions]).
+    merge(Transaction.successful).
+    where('customers.id = ?', customer).
+    group('merchants.id').
+    order('count(transactions.invoice_id) DESC').
+    limit(1)
+  end
 end
