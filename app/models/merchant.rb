@@ -25,7 +25,6 @@ class Merchant < ApplicationRecord
                                       GROUP BY merchants.id
                                       ORDER BY revenue DESC
                                       LIMIT(#{limit});")
-
   end
 
   def self.top_items_sold(limit)
