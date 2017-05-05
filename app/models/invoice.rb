@@ -4,4 +4,13 @@ class Invoice < ApplicationRecord
   has_many :transactions
   has_many :invoice_items
   has_many :items, through: :invoice_items
+
+  def self.item_best_day(item)
+    whatever = select('invoices.created_at').
+    joins(:invoice_items, :items).
+    group('invoices.created_at').
+    where('items.id = ?', item).
+    order('sum(invoice_items.quantity) DESC, invoices.created_at DESC').first.created_at
+    {best_day: whatever}
+  end
 end
