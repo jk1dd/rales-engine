@@ -72,6 +72,18 @@ describe "Item params returns single record" do
 
     expect(item["id"]).to eq(items.first.id)
   end
+
+  it "can find item by merchant id" do
+    items = create_list(:item, 3)
+
+    get "/api/v1/items/find?merchant_id=#{items.first.merchant_id}"
+
+    expect(response).to be_success
+
+    item = JSON.parse(response.body)
+
+    expect(item["id"]).to eq(items.first.id)
+  end
 end
 
 describe "Item params can return all records" do
@@ -85,7 +97,6 @@ describe "Item params can return all records" do
     item = JSON.parse(response.body)
 
     expect(item.first["id"]).to eq(items.first.id)
-
   end
 
   it "can find all items by name" do
@@ -186,4 +197,19 @@ describe "Item params can return all records" do
     expect(items.first["id"]).to eq(item1.id)
   end
 
+  it "can find all items by merchant id" do
+    merchant = create(:merchant, id: 1)
+    item1 = Item.create(name: "item1", description: "This is item 1", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 1)
+    item2 = Item.create(name: "item2", description: "This is item 2", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-03 18:06:59", merchant_id: 1)
+    item3 = Item.create(name: "item3", description: "This is item 3", unit_price: 1200, created_at: "2017-05-01 18:06:59", updated_at: "2017-05-01 18:06:59", merchant_id: 2)
+
+    get "/api/v1/items/find_all?merchant_id=1"
+
+    expect(response).to be_success
+
+    items = JSON.parse(response.body)
+
+    expect(items.count).to eq(2)
+    expect(items.first["id"]).to eq(item1.id)
+  end
 end

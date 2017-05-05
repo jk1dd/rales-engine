@@ -10,7 +10,7 @@ class Api::V1::Items::FindController < ApplicationController
     elsif params[:merchant_id]
       Item.where(merchant_id: params[:merchant_id])
     elsif params[:unit_price]
-      Item.where(unit_price: (params[:unit_price].to_f * 100.00).round(2).to_i)
+      Item.where(unit_price: format_incoming_price(params[:unit_price]))
     elsif params[:created_at]
       Item.where(created_at: params[:created_at])
     elsif params[:updated_at]
@@ -29,11 +29,23 @@ class Api::V1::Items::FindController < ApplicationController
     elsif params[:merchant_id]
       Item.find_by(merchant_id: params[:merchant_id])
     elsif params[:unit_price]
-      Item.find_by(unit_price: (params[:unit_price].to_f * 100.00).round(2).to_i)
+      Item.find_by(unit_price: format_incoming_price(params[:unit_price]))
     elsif params[:created_at]
       Item.where(created_at: params[:created_at]).first
     elsif params[:updated_at]
       Item.where(updated_at: params[:updated_at]).first
     end
+  end
+
+  private
+
+  def find_params
+    params.permit(:id,
+                  :name,
+                  :description,
+                  :merchant_id,
+                  :unit_price,
+                  :created_at,
+                  :updated_at)
   end
 end
