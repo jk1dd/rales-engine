@@ -57,4 +57,5 @@ class Merchant < ApplicationRecord
     order('count(transactions.invoice_id) DESC').
     limit(1)
   end
+
 end
