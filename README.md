@@ -10,7 +10,7 @@ Technology: Ruby, Rails, PostgresSQL, and RSpec.
 
 2. Run `bundle` from the command line to install all needed gems.
 
-3. Run `rake db: create db:migrate` to set up the PostgresSQL database.
+3. Run `rake db:create db:migrate` to set up the PostgresSQL database.
 
 4. Run `rake import_csv:import_all` to seed the database - this will take a few moments.
 
