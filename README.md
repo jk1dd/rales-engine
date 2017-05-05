@@ -1,25 +1,21 @@
-# README
+# Rales Engine
+## Description
+This project creates an API and endpoints to access records, relationships, and business intelligence for an imaginary e-commerce site. All returned data renders as JSON in the browser.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Technology: Ruby, Rails, PostgresSQL, and RSpec.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+1. Run `git clone git@github.com:jk1dd/rales-engine.git` using SSH or `git clone https://github.com/jk1dd/rales-engine.git` using HTTPS.
 
-* System dependencies
+2. Run `bundle` from the command line to install all needed gems.
 
-* Configuration
+3. Run `rake db: create db:migrate` to set up the PostgresSQL database.
 
-* Database creation
+4. Run `rake import_csv:import_all` to seed the database - this will take a few moments.
 
-* Database initialization
+5. Run `rails s` to start the server, visit `localhost:3000` on the browser, or run the spec harness while the server is up.
 
-* How to run the test suite
+6. Enjoy.
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
-# rales-engine
